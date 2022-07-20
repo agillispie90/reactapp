@@ -1,23 +1,38 @@
-import logo from './logo.svg';
+import logo from './assets/logonotext.png';
 import './App.css';
+import {useState} from 'react'
 
 function App() {
+
+  const [number, setNumber] = useState('0')
+
+  const add = ()=> {
+    setNumber(prevNum =>{
+     return Number(prevNum + 1)
+    })
+  }
+
+  const sub = ()=> {
+    setNumber(prevNum =>{
+     return Number(prevNum - 1)
+    })
+  }
+
+  function addNumbers(numberOfTimes){
+    for(let i = 0; i <= numberOfTimes ; i++){
+      setNumber(()=>{
+        return i
+      })
+    }
+  }
+
+
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>{number}</h1>
+      <button onClick={sub}>-</button>
+      <button onClick={add}>+</button>
     </div>
   );
 }
